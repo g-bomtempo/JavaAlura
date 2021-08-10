@@ -1,0 +1,36 @@
+// Conta
+
+public class Conta{
+	double saldo;
+	int agencia = 42;
+	int numero;
+	String titular;
+}
+
+// CriaConta
+
+public class CriaConta {
+
+	public static void main(String[] args) {
+		Conta primeiraConta = new Conta();
+		primeiraConta.saldo = 200;
+		System.out.println(primeiraConta.saldo);
+		
+		primeiraConta.saldo += 100;
+		
+		Conta segundaConta = new Conta();
+		segundaConta.saldo = 50;
+		
+		System.out.println("O saldo da primeira conta é " + primeiraConta.saldo);
+		System.out.println("O saldo da segunda conta é " + segundaConta.saldo);
+		
+		System.out.println("A agencia da primeira conta é " + primeiraConta.agencia);
+		
+		segundaConta.agencia = 146;
+		
+		System.out.println("A agencia da segunda conta é " + segundaConta.agencia);
+		
+
+	}
+
+}
