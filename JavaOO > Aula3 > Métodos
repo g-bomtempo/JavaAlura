@@ -1,0 +1,89 @@
+//conta
+
+public class Conta{
+	double saldo;
+	int agencia = 42;
+	int numero;
+	String titular;
+	
+	public void deposita(double valor) {
+		this.saldo = this.saldo + valor;
+	}
+	
+	public boolean saca(double valor) {
+		
+		if (this.saldo >= valor) {
+			this.saldo -= valor;
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	public boolean transfere(double valor, Conta destino) {
+		
+		if (this.saldo >= valor) {
+			this.saldo -= valor;
+			destino.deposita(valor);
+			return true;
+		} else {
+			return false;
+		}
+	}
+}
+
+//criaConta
+
+public class CriaConta {
+
+	public static void main(String[] args) {
+		Conta primeiraConta = new Conta();
+		primeiraConta.saldo = 200;
+		System.out.println(primeiraConta.saldo);
+		
+		primeiraConta.saldo += 100;
+		
+		Conta segundaConta = new Conta();
+		segundaConta.saldo = 50;
+		
+		System.out.println("O saldo da primeira conta é " + primeiraConta.saldo);
+		System.out.println("O saldo da segunda conta é " + segundaConta.saldo);
+		
+		System.out.println("A agencia da primeira conta é " + primeiraConta.agencia);
+		
+		segundaConta.agencia = 146;
+		
+		System.out.println("A agencia da segunda conta é " + segundaConta.agencia);
+		
+
+	}
+
+}
+
+
+//TestaMetodo
+
+
+public class TestaMetodo {
+
+	public static void main(String[] args) {
+		Conta conta = new Conta();
+		conta.deposita(50);
+		
+		System.out.println(conta.saldo);
+		
+		boolean verifica = conta.saca(40);
+		System.out.println(verifica);
+		System.out.println(conta.saldo);
+		
+		Conta contaDoGabriel = new Conta();
+		contaDoGabriel.deposita(200);
+		System.out.println(contaDoGabriel.saldo);
+		
+		contaDoGabriel.transfere(100, conta);
+		System.out.println(contaDoGabriel.saldo);
+		System.out.println(conta.saldo);
+
+	}
+
+}
