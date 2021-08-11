@@ -1,0 +1,76 @@
+//Conta
+
+public class Conta{
+	
+	double saldo;
+	int agencia;
+	int numero;
+	Cliente titular;
+	
+	public void deposita(double valor) {
+		this.saldo = this.saldo + valor;
+	}
+	
+	public boolean saca(double valor) {
+		
+		if (this.saldo >= valor) {
+			this.saldo -= valor;
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	public boolean transfere(double valor, Conta destino) {
+		
+		if (this.saldo >= valor) {
+			this.saldo -= valor;
+			destino.deposita(valor);
+			return true;
+		} else {
+			return false;
+		}
+	}
+}
+
+//Cliente
+
+
+public class Cliente {
+	
+	String nome;
+	String cpf;
+	String profissao;	
+
+}
+
+
+//TestaBanco
+
+
+public class TestaBanco {
+
+	public static void main(String[] args) {
+		Cliente gabriel = new Cliente();
+		gabriel.nome = "Gabriel Bomtempo";
+		gabriel.cpf = "222.222.222-22";
+		gabriel.profissao = "programador";
+		
+		Conta contaDoGabriel = new Conta();
+		contaDoGabriel.deposita(200);
+		
+		contaDoGabriel.titular = gabriel;
+		System.out.println(contaDoGabriel.titular.cpf);
+		
+		
+		Conta contaDaNina = new Conta();		
+		contaDaNina.titular = new Cliente();
+		System.out.println(contaDaNina.titular.nome);
+		
+		contaDaNina.titular.nome = "Marina";
+		System.out.println(contaDaNina.titular.nome);
+		
+		
+	}
+
+}
