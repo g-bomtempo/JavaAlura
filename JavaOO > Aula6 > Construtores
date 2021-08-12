@@ -1,0 +1,158 @@
+//Conta
+
+public class Conta{
+	
+	private double saldo;
+	private int agencia;
+	private int numero;
+	private Cliente titular;
+	private static int total;
+	
+	public Conta(int agencia, int numero) {
+		Conta.total++;
+		System.out.println("Já foram criadas " + Conta.total + " contas");
+		this.agencia = agencia;
+		this.numero = numero;
+	}
+	
+	public void deposita(double valor) {
+		this.saldo = this.saldo + valor;
+	}
+	
+	public boolean saca(double valor) {
+		
+		if (this.saldo >= valor) {
+			this.saldo -= valor;
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	public boolean transfere(double valor, Conta destino) {
+		
+		if (this.saldo >= valor) {
+			this.saldo -= valor;
+			destino.deposita(valor);
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	public double getSaldo() {
+		return this.saldo;
+	}
+	
+	public int getAgencia() {		
+		return this.getAgencia();
+	}
+	
+	public void setAgencia(int agencia) {
+		if (agencia <= 0 ) {
+			System.out.println("Agencia não pode ser um número negativo");
+			return;
+		}
+		this.agencia = agencia;		
+	}
+	
+	public int getNumero() {
+		return this.numero;
+	}
+	
+	public void setNumero(int numero) {
+		if (numero <= 0) {
+			System.out.println("Numero não pode ser negativo");
+			return;
+		}
+		this.numero = numero;
+	}
+	
+	public Cliente getTitular() {
+		return this.titular;
+	}
+	
+	public void setTitular(Cliente titular) {
+		this.titular = titular;
+	}
+	
+	public static int getTotal() {
+		return Conta.total;
+	}	
+	
+}
+
+// Cliente
+
+public class Cliente {
+	
+	private String nome;
+	private String cpf;
+	private String profissao;
+	
+	public String getNome() {
+		return nome;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	public String getCpf() {
+		return cpf;
+	}
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+	public String getProfissao() {
+		return profissao;
+	}
+	public void setProfissao(String profissao) {
+		this.profissao = profissao;
+	}		
+}
+
+//TestaBanco
+
+
+public class TestaBanco {
+
+	public static void main(String[] args) {
+		
+		Conta contaDoGabriel = new Conta(25, 2665);	
+		Cliente gabriel = new Cliente();
+		
+		contaDoGabriel.setTitular(gabriel);
+		
+		//gabriel.nome = "Gabriel Bomtempo";
+		gabriel.setNome("Gabriel");
+		//gabriel.cpf = "222.222.222-22";
+		gabriel.setCpf("222.222.222-22");
+		//gabriel.profissao = "programador";
+		gabriel.setProfissao("Programador");
+		System.out.println(gabriel.getNome());
+				
+					
+		contaDoGabriel.getTitular().setNome("Gabriel Bomtempo");
+		System.out.println(contaDoGabriel.getTitular().getNome());
+
+			
+		contaDoGabriel.deposita(200);
+		//System.out.println(contaDoGabriel.saldo);
+		System.out.println(contaDoGabriel.getSaldo());
+		System.out.println(contaDoGabriel.getNumero());
+		contaDoGabriel.setNumero(2);
+		System.out.println(contaDoGabriel.getNumero());
+		
+		contaDoGabriel.setNumero(-2);
+		//System.out.println(contaDoGabriel.getNumero());		
+
+		contaDoGabriel.setAgencia(-2);
+		//System.out.println(contaDoGabriel.getAgencia());
+		
+		Conta contaDoGabriel2 = new Conta(25, 2664);
+		System.out.println(Conta.getTotal());
+		
+	}
+
+}
+
+
