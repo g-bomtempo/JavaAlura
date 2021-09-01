@@ -1,0 +1,25 @@
+package br.com.bytebank.banco.teste;
+
+public class TesteString {
+
+	public static void main(String[] args) {
+		
+		String nome = "Alura";
+		String vazio = "   Alura  ";
+		char c = nome.charAt(3);
+		
+		String outra = nome.replace("A", "a");
+		int pos = nome.indexOf("ur");
+		String sub = nome.substring(2);
+		String outroVazio = vazio.trim();
+		
+		System.out.println(outra);
+		System.out.println(c);
+		System.out.println(pos);
+		System.out.println(sub);
+		System.out.println(outroVazio);
+
+
+	}
+
+}
